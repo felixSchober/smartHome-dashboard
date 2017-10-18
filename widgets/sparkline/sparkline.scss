@@ -1,0 +1,61 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #495f34;
+$value-color:       #fff;
+
+$title-color:       rgba(255, 255, 255, 0.7);
+$moreinfo-color:    rgba(255, 255, 255, 0.7);
+
+// ----------------------------------------------------------------------------
+// Widget-sparkline styles
+// ----------------------------------------------------------------------------
+.widget-sparkline {
+
+  background-color: $background-color;
+  position: relative;
+
+  div.sparkline-container {
+    // border:1px solid black;
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  svg {
+    // border:1px solid red;
+    position: block;
+    opacity: 0.4;
+    fill-opacity: 0.4;
+    padding: 3px 0px 4px;
+    width: 100%;
+  }
+
+  .title {
+    color: $title-color;
+  }
+
+  .value {
+    color: $value-color;
+    font-size:2.5em;
+    text-transform: lowercase;
+  }
+
+  .change-rate {
+    font-weight: 500;
+    font-size: 30px;
+    color: $value-color;
+  }
+
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  .updated-at {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  .x_tick, .y_ticks, .domain {
+    display: none;
+  }
+
+}
