@@ -1,0 +1,67 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #f04245; //#ec663c;
+
+$title-color:       rgba(255, 255, 255, 1);
+$subtitle-color:    rgba(255, 255, 255, 0.7);
+$hr-color:          rgba(255, 255, 255, 0.2);
+$moreinfo-color:    rgba(255, 255, 255, 0.7);
+
+// ----------------------------------------------------------------------------
+// Widget-calendar styles
+// ----------------------------------------------------------------------------
+.widget-room-booking-today {
+
+  background-color: $background-color;
+  
+  .subtitle {
+  color: $subtitle-color;
+  font-size: 0.75em;
+  margin: 15px 0;
+  }
+
+  .title {
+    color: $title-color;
+    font-size: 2.0em;
+  }
+
+  .times {
+    font-size: 0.9em;
+  }
+
+  .next {
+    font-size: 0.75em;
+    margin-top: 30px;
+    .tr {
+      border-bottom: 1px solid $subtitle-color;
+      .td {
+        text-align: left;
+      }
+    }
+  }
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  .updated-at {
+    color: $subtitle-color;
+    bottom: 5px;
+    right: 5px;
+    left: auto;
+    font-size: 0.5em;
+  }
+
+  .divider {
+    background-color: $hr-color;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 2px;
+  }
+
+  &.large h3 {
+    font-size: 65px;
+  }
+}

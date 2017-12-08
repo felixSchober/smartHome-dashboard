@@ -1,6 +1,7 @@
 # dashing.js is located in the dashing framework
 # It includes jquery & batman for you.
 #= require dashing.js
+#= require moment.js
 
 #= require_directory .
 #= require_tree ../../widgets
@@ -16,7 +17,7 @@ Dashing.on 'ready', ->
 
   Batman.setImmediate ->
     $('.gridster').width(contentWidth)
-    $('.gridster ul:first').gridster
+    $('.gridster > ul').gridster
       widget_margins: Dashing.widget_margins
       widget_base_dimensions: Dashing.widget_base_dimensions
       avoid_overlapped_widgets: !Dashing.customGridsterLayout

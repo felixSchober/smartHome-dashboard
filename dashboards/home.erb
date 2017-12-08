@@ -1,7 +1,11 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1gRMzUNHmZTldNdhSD0p1O1Gcm3fbALk&v=3.exp"></script>
-<script type='text/javascript'>
+ <script type='text/javascript'>
+ function test() {
+  alert('Hey');
+ }
+ </script>
+ <script type='text/javascript'>
  $(function() {
-   Dashing.gridsterLayout('[{"col":1,"row":1,"size_x":2,"size_y":1},{"col":3,"row":2,"size_x":1,"size_y":1},{"col":4,"row":2,"size_x":1,"size_y":1},{"col":1,"row":2,"size_x":1,"size_y":2},{"col":2,"row":2,"size_x":1,"size_y":1},{"col":3,"row":1,"size_x":1,"size_y":1},{"col":4,"row":1,"size_x":1,"size_y":1}]')
+   
    Dashing.widget_base_dimensions = [250, 250]
   Dashing.numColumns = 4
  });
@@ -10,24 +14,37 @@
   <ul>
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
       <div data-id="clock" data-view="Clock" onclick="location.href='http://localhost:3030/apple_tv'"></div>
+      <i class="fa fa-clock-o icon-background" style="font-size: 8em;"></i>
     </li>
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="espressoTotal" data-view="Espresso" data-title="Espressos" data-moreinfo="In Total" style="background-color:#96bf48;"></div>
+
+    <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="lightsOn" data-view="Number" data-title="Lights" onclick="location.href='http://localhost:3030/lights'"></div>
+      <i class="fa fa-lightbulb-o icon-background" style="font-size: 8em;"></i>
     </li>
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="espressoWeekly" data-view="Number" data-title="Espressos" data-moreinfo="This Week" style="background-color:#96bf48;"></div>
+
+    <li data-row="1" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-id="tvStatus" data-view="Text" data-title="TV" onclick="location.href='http://localhost:3030/tv'"></div>
+      <i class="fa fa-television icon-background"  style="font-size: 8em;"></i>
     </li>
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="2">
-      <div data-view="DailyXKCD" data-id="xkcd-of-the-day"></div>
-    </li>
-    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
-      <div data-id="forecast" data-view="Forecast" data-widget_title=" Weather Forecast"> ></div>
-    </li>
+
     <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="temperature_entrance" data-view="Graph" data-title="Temperatur Eingang" data-moreinfo="°C"></div>
-    </li>  
+      <div data-id="electricityTotalCurrent" data-view="Number" data-title="Electricity" onclick="location.href='http://localhost:3030/power'"></div>
+      <i class="fa fa-plug  icon-background" style="font-size: 8em;"></i>
+    </li>
+
     <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
-      <div data-id="temperature_kitchen" data-view="Graph" data-title="Temperatur Küche" data-moreinfo="°C"></div>
+      <div data-id="calendarEventsTotal" data-view="Number" data-title="Calendar Events" onclick="location.href='http://localhost:3030/calendar'"></div>
+      <i class="fa fa-calendar  icon-background" style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="currentTemperature" data-view="Number" data-title="Temperature" onclick="location.href='http://localhost:3030/weather'"></div>
+      <i class="fa fa-sun-o  icon-background" style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="2" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-id="espressoTotal" data-view="Number" data-title="Espressos" onclick="location.href='http://localhost:3030/espresso'"></div>
+      <i class="fa fa-coffee icon-background" style="font-size: 8em;"></i>
     </li>
   </ul>
 </div>

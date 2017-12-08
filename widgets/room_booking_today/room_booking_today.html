@@ -1,0 +1,21 @@
+<h1 class="title"><span data-bind="title"></span> for <span data-bind="today_name"></span></h1>
+
+<div class="divider"></div>
+<h3 class="subtitle" data-bind="event_date"></h3>
+<h1 class="times" data-bind="next_booking_text"></h1>
+<h2 class="title" data-bind="event.summary"></h2>
+<h3 class="times"><span data-bind="event_times"></span> (<span data-bind="event_times_duration"></span> minutes)</h3>
+<h3 class="times" data-bind="event_organizer"></h3>
+
+<h4 data-bind="next_count"></h4>
+<div class="divider"></div>
+<table class="next">
+  <tr data-foreach-e='next_events'>
+    <td data-bind="e.start_date"></td>
+    <td data-bind="e.start_time"></td>
+    <td data-bind="e.start_time_in"></td>
+    <td data-bind="e.summary"></td>
+  </tr>
+</table>
+
+<div class="updated-at" data-bind="updatedAtMessage"></div>
