@@ -27,6 +27,14 @@ function turn_off() {
 
 </script>
 
+<script type='text/javascript'>
+ $(function() {
+   
+   Dashing.widget_base_dimensions = [250, 250]
+  Dashing.numColumns = 4
+ });
+ </script>
+
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1" id="test">
@@ -44,27 +52,27 @@ function turn_off() {
     </li>
 
     <li data-row="1" data-col="4" data-sizex="1" data-sizey="1">
-      <div data-id="tv_apple" data-view="Text" data-title="Apple TV" style="background-color:#000000;"></div>
+      <div data-id="tv_apple" data-view="Text" onclick="turn_on('Apple TV sehen', null)" data-title="Apple TV" style="background-color:#000000;"></div>
       <i class="fa fa-apple icon-background" style="font-size: 8em;"></i>
     </li>
 
     <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="tv_netflix" data-view="Text" data-title="Netflix" style="background-color:#000000;"></div>
+      <div data-id="tv_netflix" data-view="Text" data-title="Netflix" onclick="turn_on('Netflix', null)" style="background-color:#000000;"></div>
       <i class="fa fa-film icon-background"  style="font-size: 8em;"></i>
     </li>
 
     <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
-      <div data-id="tv_prime" data-view="Text" data-title="Amazon Prime" style="background-color:#000000;"></div>
+      <div data-id="tv_prime" data-view="Text" data-title="Amazon Video" onclick="turn_on('Amazon Video', null)" style="background-color:#000000;"></div>
       <i class="fa fa-amazon icon-background"  style="font-size: 8em;"></i>
     </li>
 
     <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
-      <div data-id="tv_youtube" data-view="Text" data-title="Youtube" style="background-color:#000000;"></div>
+      <div data-id="tv_youtube" data-view="Text" data-title="Youtube" onclick="turn_on('Youtube', null)" style="background-color:#000000;"></div>
       <i class="fa fa-youtube icon-background"  style="font-size: 8em;"></i>
     </li>
 
     <li data-row="2" data-col="4" data-sizex="1" data-sizey="1">
-      <div data-id="tv_xbox" data-view="Text" data-title="XBox" style="background-color:#000000;"></div>
+      <div data-id="tv_xbox" data-view="Text" data-title="XBox" onclick="turn_on('XBOX', null)" style="background-color:#000000;"></div>
       <i class="fa fa-gamepad icon-background"  style="font-size: 8em;"></i>
     </li>
   </ul>
