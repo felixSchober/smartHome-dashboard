@@ -5,8 +5,7 @@ def get_current_total_power(http)
  	return data['power'].to_i
  end
 
- def get_espresso_graph()
-	http = create_http
+ def get_espresso_graph(http)
 	request = create_request("/api/hs110/plugs/Espresso/powerState/history")
   	response = http.request(request)
  	data = JSON.parse(response.body)
@@ -41,14 +40,6 @@ total_power_chart_data = [
 	},
 ]
 
-espresso_power_data = get_espresso_graph
-
-# fill arrays
-for i in 0..power_chart_labels.length
-	total_power_chart_data[0][:data][i] = espresso_power_data[i]
-
-end
-
 charts_options = { }
 
 
@@ -62,7 +53,7 @@ SCHEDULER.every '10s', :first_in => 0 do |job|
 	current_total_power_level = get_current_total_power(http)
 
 	# power level graphs
-	espresso_power_data = get_espresso_graph
+	espresso_power_data = get_espresso_graph(http)
 	total_power_chart_data[0][:data] = espresso_power_data
 	send_event('total_electricity_consumption_graph', { labels: power_chart_labels, datasets: total_power_chart_data, options: charts_options })
 

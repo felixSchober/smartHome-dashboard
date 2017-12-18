@@ -1,7 +1,71 @@
+<script type="text/javascript">
+
+function turn_on(device, page) {
+	var bodyData = {"device": device};
+
+	$.ajax({
+	  type: 'POST',
+	  url: 'http://127.0.0.1:3000/api/harmony/activity/start',
+	  data: bodyData
+	});
+
+  if (page != null) {
+    location.href='http://localhost:3030/' + page
+  }
+}
+
+function turn_off() {
+  var bodyData = {};
+
+  $.ajax({
+    type: 'POST',
+    url: 'http://127.0.0.1:3000/api/harmony/activity/stop',
+    data: bodyData
+  });
+}
+
+
+</script>
+
 <div class="gridster">
   <ul>
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1" id="test">
       <div data-id="home" data-view="Changepage" data-icon="arrow-left" data-title="Back" onclick="location.href='http://localhost:3030/home'" data-fasttransition="true" style="background-color:#085C61"></div>
+    </li>
+
+    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="tvStatus" data-view="Text" data-title="Turn OFF" onclick="turn_off()" style="background-color:#000000;"></div>
+      <i class="fa fa-television icon-background"  style="font-size: 8em;"></i>
+    </li>
+
+     <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="tv_live" data-view="Status" onclick="turn_on('Fehrnsehen', 'tv_live')" data-title="Fernsehen" style="background-color:#000000;"></div>
+      <i class="fa fa-play icon-background"  style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="1" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-id="tv_apple" data-view="Text" data-title="Apple TV" style="background-color:#000000;"></div>
+      <i class="fa fa-apple icon-background" style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="tv_netflix" data-view="Text" data-title="Netflix" style="background-color:#000000;"></div>
+      <i class="fa fa-film icon-background"  style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="tv_prime" data-view="Text" data-title="Amazon Prime" style="background-color:#000000;"></div>
+      <i class="fa fa-amazon icon-background"  style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="tv_youtube" data-view="Text" data-title="Youtube" style="background-color:#000000;"></div>
+      <i class="fa fa-youtube icon-background"  style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="2" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-id="tv_xbox" data-view="Text" data-title="XBox" style="background-color:#000000;"></div>
+      <i class="fa fa-gamepad icon-background"  style="font-size: 8em;"></i>
     </li>
   </ul>
 </div>
