@@ -1,7 +1,143 @@
+<script type='text/javascript'>
+ $(function() {
+   
+   Dashing.widget_base_dimensions = [135, 135]
+  Dashing.numColumns = 7
+ });
+ </script>
+
+ <script type="text/javascript">
+
+function change_to(channel) {
+	var bodyData = {};
+
+	$.ajax({
+	  type: 'POST',
+	  url: 'http://127.0.0.1:3000/api/harmony/tv/channel/' + channel,
+	  data: bodyData
+	});
+}
+</script>
+
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1" id="test">
-      <div data-id="home" data-view="Changepage" data-icon="arrow-left" data-title="Back" onclick="location.href='http://localhost:3030/tv'" data-fasttransition="true" style="background-color:#085C61"></div>
+      <div data-id="home" data-view="Changepage" data-icon="arrow-left" onclick="location.href='http://localhost:3030/tv'" data-fasttransition="true" style="background-color:#085C61"></div>
+    </li>
+
+    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/ARD-HD.png" onclick="change_to('ARD')"></div>
+    </li>
+
+    <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/ZDF-HD.png" onclick="change_to('ZDF')"></div>
+    </li>
+
+     <li data-row="1" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Sat-1.png" onclick="change_to('SAT1')"></div>
+    </li>
+
+     <li data-row="1" data-col="5" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/RTL.png" onclick="change_to('RTL')"></div>
+    </li>
+
+    <li data-row="1" data-col="6" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/ZDF-Info-HD.png" onclick="change_to('ZDFINFO')"></div>
+    </li>
+
+    <li data-row="1" data-col="7" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/ZDF-Neo-HD.png" onclick="change_to('ZDFNEO')"></div>
+    </li>
+
+
+     
+
+     <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Vox.png" onclick="change_to('VOX')"></div>
+    </li>
+
+     <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Kabel-1.png" onclick="change_to('KABEL')"></div>
+    </li>
+
+     <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/NTV.png" onclick="change_to('NTV')"></div>
+    </li>
+
+    <li data-row="2" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/N24.png" onclick="change_to('N24')"></div>
+    </li>
+
+    <li data-row="2" data-col="5" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Kabel-1-Doku.png" onclick="change_to('KABEL1DOKU')"></div>
+    </li>
+
+    <li data-row="2" data-col="6" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/RTL-2.png" onclick="change_to('RTL2')"></div>
+    </li>
+
+    <li data-row="2" data-col="7" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/RTL-Nitro.png" onclick="change_to('RTLNITRO')"></div>
+    </li>
+     
+
+    
+
+    <li data-row="3" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Tele5.png" onclick="change_to('TELE5')"></div>
+    </li>
+
+    <li data-row="3" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Sixx.png" onclick="change_to('SIXX')"></div>
+    </li>
+
+    <li data-row="3" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Arte-HD.png" onclick="change_to('ARTE')"></div>
+    </li>
+
+    <li data-row="3" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Prosieben-MAXX.png" onclick="change_to('PRO7MAXX')"></div>
+    </li>
+
+    <li data-row="3" data-col="5" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/CNN-International.png" onclick="change_to('CNN')"></div>
+    </li>
+
+    <li data-row="3" data-col="6" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Eurosport-1.png" onclick="change_to('EUROSPORT')"></div>
+    </li>
+
+    <li data-row="3" data-col="7" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Sat-1-Gold.png" onclick="change_to('SAT1GOLD')"></div>
+    </li>
+
+
+    <li data-row="4" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Sport-1.png" onclick="change_to('SPORT1')"></div>
+    </li>
+
+    <li data-row="4" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/3Sat-HD.png" onclick="change_to('3SAT')"></div>
+    </li>
+
+    <li data-row="4" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/BR-HD.png" onclick="change_to('BR')"></div>
+    </li>
+
+    <li data-row="4" data-col="4" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Welt-der-Wunder-TV.png" onclick="change_to('WDW')"></div>
+    </li>
+
+    <li data-row="4" data-col="5" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Einsplus-HD.png" onclick="change_to('EINSPLUS')"></div>
+    </li>
+
+    <li data-row="4" data-col="6" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/SWR-HD.png" onclick="change_to('SWR')"></div>
+    </li>
+
+    <li data-row="4" data-col="7" data-sizex="1" data-sizey="1">
+      <div data-view="Image" data-image="/channels/Tagesschau24-HD.png" onclick="change_to('TAGESSCHAU24')"></div>
     </li>
   </ul>
 </div>
