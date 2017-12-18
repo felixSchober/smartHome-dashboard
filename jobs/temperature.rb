@@ -2,7 +2,7 @@ def get_current_temperature(http, location)
 	request = create_request("/api/hue/motion/#{location}/temperature")
   	response = http.request(request)
  	data = JSON.parse(response.body)
- 	return data.power
+ 	return data['temperature']
  end
 
 current_temperature_kitchen = 0.0
