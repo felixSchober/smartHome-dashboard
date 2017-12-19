@@ -15,6 +15,10 @@ def get_current_total_power(http)
 
 # single items
 current_total_power_level = 0.0
+current_espresso_power = 0.0
+current_computer_power = 0.0
+current_media_power = 0.0
+current_kitchen_power = 0.0
 
 # graphs
 time_x = 0
@@ -79,8 +83,27 @@ SCHEDULER.every '10s', :first_in => 0 do |job|
 	total_power_chart_data[1][:data] = get_power_graph(http, 'Media')
 	total_power_chart_data[2][:data] = get_power_graph(http, 'Computer')
 	total_power_chart_data[3][:data] = get_power_graph(http, 'Kitchen')
+
+
+	# individual power levels
+	last_espresso_power = current_espresso_power
+	last_computer_power = current_computer_power
+	last_media_power = current_media_power
+	last_kitchen_power = current_kitchen_power
+
+	current_espresso_power = total_power_chart_data[0][:data].last.to_i
+	current_computer_power = total_power_chart_data[2][:data].last.to_i
+	current_media_power = total_power_chart_data[1][:data].last.to_i
+	current_kitchen_power = total_power_chart_data[3][:data].last.to_i
+
 	send_event('total_electricity_consumption_graph', { labels: power_chart_labels, datasets: total_power_chart_data, options: charts_options })
 
 
 	send_event('electricityTotalCurrent', { current: current_total_power_level, last: last_total_power_level })
+	send_event('power_espresso', { current: current_espresso_power, last: last_espresso_power })
+	send_event('power_computer', { current: current_computer_power, last: last_computer_power })
+	send_event('power_media', { current: current_media_power, last: last_media_power })
+	send_event('power_kitchen', { current: current_kitchen_power, last: last_kitchen_power })
+
+
 end
