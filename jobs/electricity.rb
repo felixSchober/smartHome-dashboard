@@ -6,7 +6,7 @@ def get_current_total_power(http)
  end
 
  def get_power_graph(http, device)
-	request = create_request("/api/hs110/plugs/#{location}/powerState/history")
+	request = create_request("/api/hs110/plugs/#{device}/powerState/history")
   	response = http.request(request)
  	data = JSON.parse(response.body)
  	return data['history']
