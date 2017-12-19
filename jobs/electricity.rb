@@ -5,12 +5,13 @@ def get_current_total_power(http)
  	return data['power'].to_i
  end
 
- def get_espresso_graph(http)
-	request = create_request("/api/hs110/plugs/Espresso/powerState/history")
+ def get_power_graph(http, device)
+	request = create_request("/api/hs110/plugs/#{location}/powerState/history")
   	response = http.request(request)
  	data = JSON.parse(response.body)
  	return data['history']
  end
+
 
 # single items
 current_total_power_level = 0.0
@@ -28,7 +29,7 @@ for i in 0..360
 	end
 end
 
-total_power_chart_titles = ['Espresso Machine']
+total_power_chart_titles = ['Espresso Machine', 'Media', 'Computer', 'Kitchen']
 
 total_power_chart_data = [
 	{
@@ -36,6 +37,27 @@ total_power_chart_data = [
 		data: Array.new(power_chart_labels.length) { 0 },
 		backgroundColor: [ 'rgba(255, 99, 132, 0.2)' ] * power_chart_labels.length,
     	borderColor: [ 'rgba(255, 99, 132, 1)' ] * power_chart_labels.length,
+    	borderWidth: 1,
+	},
+	{
+		label: total_power_chart_titles[1],
+		data: Array.new(power_chart_labels.length) { 0 },
+		backgroundColor: [ 'rgba(255, 206, 86, 0.2)' ] * power_chart_labels.length,
+    	borderColor: [ 'rgba(255, 206, 86, 1)' ] * power_chart_labels.length,
+    	borderWidth: 1,
+	},
+	{
+		label: total_power_chart_titles[2],
+		data: Array.new(power_chart_labels.length) { 0 },
+		backgroundColor: [ 'rgba(0, 191, 25, 0.2)' ] * power_chart_labels.length,
+    	borderColor: [ 'rgba(0, 191, 25, 1)' ] * power_chart_labels.length,
+    	borderWidth: 1,
+	},
+	{
+		label: total_power_chart_titles[3],
+		data: Array.new(power_chart_labels.length) { 0 },
+		backgroundColor: [ 'rgba(96, 125, 139, 0.2)' ] * power_chart_labels.length,
+    	borderColor: [ 'rgba(96, 125, 139, 1)' ] * power_chart_labels.length,
     	borderWidth: 1,
 	},
 ]
@@ -53,8 +75,10 @@ SCHEDULER.every '10s', :first_in => 0 do |job|
 	current_total_power_level = get_current_total_power(http)
 
 	# power level graphs
-	espresso_power_data = get_espresso_graph(http)
-	total_power_chart_data[0][:data] = espresso_power_data
+	total_power_chart_data[0][:data] = get_power_graph(http, 'Espresso')
+	total_power_chart_data[1][:data] = get_power_graph(http, 'Media')
+	total_power_chart_data[2][:data] = get_power_graph(http, 'Computer')
+	total_power_chart_data[3][:data] = get_power_graph(http, 'Kitchen')
 	send_event('total_electricity_consumption_graph', { labels: power_chart_labels, datasets: total_power_chart_data, options: charts_options })
 
 
