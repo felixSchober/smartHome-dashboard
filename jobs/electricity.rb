@@ -56,8 +56,8 @@ total_power_chart_data = [
 	{
 		label: total_power_chart_titles[3],
 		data: Array.new(power_chart_labels.length) { 0 },
-		backgroundColor: [ 'rgba(96, 125, 139, 0.2)' ] * power_chart_labels.length,
-    	borderColor: [ 'rgba(96, 125, 139, 1)' ] * power_chart_labels.length,
+		backgroundColor: [ 'rgba(33, 150, 243, 0.2)' ] * power_chart_labels.length,
+    	borderColor: [ 'rgba(33, 150, 243, 1)' ] * power_chart_labels.length,
     	borderWidth: 1,
 	},
 ]
