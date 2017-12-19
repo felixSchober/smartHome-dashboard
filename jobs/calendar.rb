@@ -1,7 +1,7 @@
 require 'net/http'
 require 'json'
 
-SERVER_API = URI.parse("http://127.0.0.1:3000")
+SERVER_API = URI.parse("http://192.168.178.26:3000")
 
 # create HTTP
 def create_http
