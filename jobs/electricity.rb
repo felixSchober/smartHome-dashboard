@@ -1,12 +1,19 @@
 def get_current_total_power(http)
-	request = create_request("/api/hs110/plugs/powerState")
+	request = create_request("/api/power/total")
   	response = http.request(request)
  	data = JSON.parse(response.body)
  	return data['power'].to_i
  end
 
  def get_power_graph(http, device)
-	request = create_request("/api/hs110/plugs/#{device}/powerState/history")
+	request = create_request("/api/power/plugs/#{device}/powerState/history")
+  	response = http.request(request)
+ 	data = JSON.parse(response.body)
+ 	return data['history']
+ end
+
+ def get_power_graph_for_lights(http)
+	request = create_request("/api/power/lights/powerState/history")
   	response = http.request(request)
  	data = JSON.parse(response.body)
  	return data['history']
@@ -19,6 +26,7 @@ current_espresso_power = 0.0
 current_computer_power = 0.0
 current_media_power = 0.0
 current_kitchen_power = 0.0
+current_light_power = 0.0
 
 # graphs
 time_x = 0
@@ -33,7 +41,7 @@ for i in 0..360
 	end
 end
 
-total_power_chart_titles = ['Espresso Machine', 'Media', 'Computer', 'Kitchen']
+total_power_chart_titles = ['Espresso Machine', 'Media', 'Computer', 'Kitchen', 'Lights']
 
 total_power_chart_data = [
 	{
@@ -64,6 +72,13 @@ total_power_chart_data = [
     	borderColor: [ 'rgba(33, 150, 243, 1)' ] * power_chart_labels.length,
     	borderWidth: 1,
 	},
+	{
+		label: total_power_chart_titles[4],
+		data: Array.new(power_chart_labels.length) { 0 },
+		backgroundColor: [ 'rgba(233, 30, 99, 0.2)' ] * power_chart_labels.length,
+    	borderColor: [ 'rgba(233, 30, 99, 1)' ] * power_chart_labels.length,
+    	borderWidth: 1,
+	},
 ]
 
 charts_options = { }
@@ -83,6 +98,8 @@ SCHEDULER.every '10s', :first_in => 0 do |job|
 	total_power_chart_data[1][:data] = get_power_graph(http, 'Media')
 	total_power_chart_data[2][:data] = get_power_graph(http, 'Computer')
 	total_power_chart_data[3][:data] = get_power_graph(http, 'Kitchen')
+	total_power_chart_data[4][:data] = get_power_graph_for_lights(http)
+
 
 
 	# individual power levels
@@ -90,11 +107,13 @@ SCHEDULER.every '10s', :first_in => 0 do |job|
 	last_computer_power = current_computer_power
 	last_media_power = current_media_power
 	last_kitchen_power = current_kitchen_power
+	last_light_power = current_light_power
 
 	current_espresso_power = total_power_chart_data[0][:data].last.to_i
 	current_computer_power = total_power_chart_data[2][:data].last.to_i
 	current_media_power = total_power_chart_data[1][:data].last.to_i
 	current_kitchen_power = total_power_chart_data[3][:data].last.to_i
+	current_light_power = total_power_chart_data[4][:data].last.to_i
 
 	send_event('total_electricity_consumption_graph', { labels: power_chart_labels, datasets: total_power_chart_data, options: charts_options })
 
@@ -104,6 +123,5 @@ SCHEDULER.every '10s', :first_in => 0 do |job|
 	send_event('power_computer', { current: current_computer_power, last: last_computer_power })
 	send_event('power_media', { current: current_media_power, last: last_media_power })
 	send_event('power_kitchen', { current: current_kitchen_power, last: last_kitchen_power })
-
-
+	send_event('power_lights', { current: current_light_power, last: last_light_power })
 end
