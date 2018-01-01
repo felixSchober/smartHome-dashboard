@@ -1,4 +1,21 @@
-# :first_in sets how long it takes before the job is first run. In this case, it is run immediately
-SCHEDULER.every '1m', :first_in => 0 do |job|
-  send_event('widget_id', { })
+def get_light_data(http)
+	request = create_request("/api/hue/lights")
+  	response = http.request(request)
+ 	data = JSON.parse(response.body)
+ 	return data
+end
+
+current_lights_on = 0
+
+
+SCHEDULER.every '20s', :first_in => 0 do |job|
+	http = create_http
+
+	last_lights_on = current_lights_on
+
+	light_data = get_light_data(http)
+	current_lights_on = light_data['lightsOnCount'].to_i
+
+	send_event('lightsOn', { current: current_lights_on, last: last_lights_on })
+
 end
