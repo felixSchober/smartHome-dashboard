@@ -1,5 +1,6 @@
 require 'net/http'
 require 'json'
+require_relative('variable.rb')
 
 SERVER_API = URI.parse("http://192.168.178.26:3000")
 
@@ -23,14 +24,8 @@ def get_calendar_stats(http)
  	return data.count
  end
 
-current_number_of_events_today = 0
-
-
-
-SCHEDULER.every '10m', :first_in => 0 do |job|
+SCHEDULER.every '5m', :first_in => 0 do |job|
 	http = create_http
-
-	last_number_of_events_today = current_number_of_events_today
-	current_number_of_events_today = get_calendar_stats(http)
-	send_event('calendarEventsTotal', { current: current_number_of_events_today, last: last_number_of_events_today })
+	$current_number_of_events_today = get_calendar_stats(http)
+	send_event('calendarEventsTotal', { current: $current_number_of_events_today, last: $last_number_of_events_today })
 end

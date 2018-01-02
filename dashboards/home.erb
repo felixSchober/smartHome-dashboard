@@ -1,24 +1,106 @@
  <script type='text/javascript'>
- function test() {
-  alert('Hey');
- }
- </script>
- <script type='text/javascript'>
  $(function() {
    
-   Dashing.widget_base_dimensions = [250, 250]
-  Dashing.numColumns = 4
+   Dashing.widget_base_dimensions = [187, 187]
+  Dashing.numColumns = 5
  });
  </script>
+
+ <style type="text/css">
+body {
+  font-size: 10px;
+}
+
+h1 {
+   font-size: 30px;
+   margin-bottom: 5px;
+   margin-top: 5px;
+}
+
+h2 {
+   font-size: 30px;
+}
+
+h3 {
+   margin-bottom: 2px;
+   margin-top: 2px;
+   font-size: 25px;
+}
+
+li {
+   font-size: 12px;
+}
+
+.updated-at {
+  font-size: 10px;
+  bottom: 2px;
+}
+
+.more-info {
+  font-size: 12px;
+  bottom: 15px;
+}
+.widget {
+  vertical-align: top;
+  padding: 2px 3px;
+}
+
+.widget-number .change-rate {
+     font-size: 19px;
+}
+.widget-number h2 {
+     font-size: 50px;
+}
+.widget-news h1 {
+     font-size: 30px;
+}
+.widget-news h2 {
+     font-size: 20px;
+}
+.widget-time-since_last p {
+     font-size: 17px;
+}
+.widget-list li {
+  margin: 0 3px;
+}
+.widget-list ol {
+  margin: 0 3px;
+}
+.widget-list ul {
+  margin: 0 3px;
+}
+.widget-list .value {
+  margin-left: 4px;
+}
+.widget-comments .title  {
+  margin-bottom: 5px;
+}
+.widget-graph .x_tick .title {
+    font-size: 10px;
+    font-weight: 600;
+}
+.widget-graph .y_tick .title {
+    font-size: 8px;
+    font-weight: 600;
+}
+.widget-comments.twitter_mentions p {
+    font-size: 15px;
+}
+.icon-background {
+  opacity: 0.1;
+  font-size: 125px;
+}
+</style>
+
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="clock" data-view="Clock" onclick="location.href='http://192.168.178.26:3030/apple_tv'" style="background-color:#F44336"></div>
+      <div data-id="clock" data-view="Clock" onclick="location.href='http://192.168.178.26:3030/apple_tv'" style="background-color:#F44336;"></div>
       <i class="fa fa-clock-o icon-background" style="font-size: 8em;"></i>
     </li>
 
     <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
-      <div data-id="lightsOn" data-view="Number" data-title="Lights" onclick="location.href='http://192.168.178.26:3030/lights'" style="background-color:#3F51B5"></div>
+      <div data-id="lightsOn" data-view="Number" data-title="Lights On" onclick="location.href='http://192.168.178.26:3030/lights'" style="background-color:#3F51B5"></div>
       <i class="fa fa-lightbulb-o icon-background" style="font-size: 8em;"></i>
     </li>
 
@@ -27,25 +109,41 @@
       <i class="fa fa-television icon-background"  style="font-size: 8em;"></i>
     </li>
 
-    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="electricityTotalCurrent" data-view="Number" data-title="Total Power" data-suffix="W" onclick="location.href='http://192.168.178.26:3030/power'" style="background-color:#4CAF50"></div>
+    <li data-row="1" data-col="5" data-sizex="1" data-sizey="1">
+      <div data-id="electricityTotalCurrent" data-view="Number" data-title="Power" data-suffix="W" onclick="location.href='http://192.168.178.26:3030/power'" style="background-color:#4CAF50"></div>
       <i class="fa fa-plug  icon-background" style="font-size: 8em;"></i>
     </li>
 
-    <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
-      <div data-id="calendarEventsTotal" data-view="Number" data-title="Calendar Events" onclick="location.href='http://192.168.178.26:3030/calendar'" style="background-color:#FF9800"></div>
+    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="calendarEventsTotal" data-view="Number" data-title="Today" onclick="location.href='http://192.168.178.26:3030/calendar'" style="background-color:#FF9800"></div>
       <i class="fa fa-calendar  icon-background" style="font-size: 8em;"></i>
     </li>
 
+    <li data-row="3" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="calendarEventsTotal" data-view="Number" data-title="Tomorrow" onclick="location.href='http://192.168.178.26:3030/calendar'" style="background-color:#FF9800"></div>
+      <i class="fa fa-calendar  icon-background" style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="espressoTotal" data-view="Number" data-title="Espresso" more-info="Total" onclick="location.href='http://192.168.178.26:3030/espresso'"  style="background-color:#000000"></div>
+      <i class="fa fa-coffee icon-background" style="font-size: 8em;"></i>
+    </li>
+
     <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
-      <div data-id="currentTemperature" data-view="Number" data-title="Temperature" onclick="location.href='http://192.168.178.26:3030/weather'" style="background-color:#607D8B"></div>
+      <div data-id="espressoWeek" data-view="Number" data-title="Espresso" more-info="Week" onclick="location.href='http://192.168.178.26:3030/espresso'"  style="background-color:#000000"></div>
+      <i class="fa fa-coffee icon-background" style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="3" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="currentTemperatureEntrance" data-view="Number" data-title="Entrance" data-suffix="°C" onclick="location.href='http://192.168.178.26:3030/weather'" style="background-color:#607D8B"></div>
+      <i class="fa fa-sun-o  icon-background" style="font-size: 8em;"></i>
+    </li>
+
+    <li data-row="3" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="currentTemperatureKitchen " data-view="Number" data-title="Kitchen" data-suffix="°C" onclick="location.href='http://192.168.178.26:3030/weather'" style="background-color:#607D8B"></div>
       <i class="fa fa-sun-o  icon-background" style="font-size: 8em;"></i>
     </li>
 
     
-
-    <li data-row="2" data-col="4" data-sizex="1" data-sizey="1">
-      <div data-id="home" data-view="Changepage" data-icon="arrow-right" data-title="More" data-fasttransition="true" onclick="location.href='http://192.168.178.26:3030/home2'"  style="background-color:#000000"></div>
-    </li>
   </ul>
 </div>
