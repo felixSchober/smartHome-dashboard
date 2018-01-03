@@ -17,15 +17,18 @@ def create_request(path)
   return request
 end
 
-def get_calendar_stats(http)
-	request = create_request("/api/calendar/events/today/count")
+def get_calendar_stats(http, time)
+	request = create_request("/api/calendar/events/#{time}")
   	response = http.request(request)
  	data = JSON.parse(response.body)
- 	return data.count
+ 	return data
  end
 
-SCHEDULER.every '5m', :first_in => 0 do |job|
+SCHEDULER.every '30m', :first_in => 0 do |job|
 	http = create_http
-	$current_number_of_events_today = get_calendar_stats(http)
-	send_event('calendarEventsTotal', { current: $current_number_of_events_today, last: $last_number_of_events_today })
+	$current_number_of_events_today = get_calendar_stats(http, 'today')["count"]
+  $current_number_of_events_tomorrow = get_calendar_stats(http, 'tomorrow')["count"]
+	send_event('calendarEventsTodayCount', { current: $current_number_of_events_today, last: $last_number_of_events_today })
+  send_event('calendarEventsTomorrowCount', { current: $current_number_of_events_tomorrow, last: $last_number_of_events_tomorrow })
+
 end
