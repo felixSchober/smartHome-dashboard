@@ -117,8 +117,8 @@ li {
     </li>
 
    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
-      <div data-id="kitchenGroupStatus" data-view="Text" data-title="Kitchen Mode" onclick="toggle_kitchen_scene()" style="background-color:#3F51B5"></div>
-      <i class="fa fa-lightbulb-o icon-background" style="font-size: 8em;"></i>
+      <div data-id="tvStatus" data-view="Text" data-title="TV" onclick="location.href='http://192.168.178.26:3030/tv'" style="background-color:#000000"></div>
+      <i class="fa fa-television icon-background"  style="font-size: 8em;"></i>
     </li>
 
     <li data-row="1" data-col="5" data-sizex="1" data-sizey="1">
@@ -153,23 +153,24 @@ li {
 
 
     <li data-row="3" data-col="2" data-sizex="1" data-sizey="1">
-      <div data-id="currentTemperatureEntrance" data-view="Number" data-title="Entrance" data-suffix="°C" onclick="location.href='http://192.168.178.26:3030/weather'" style="background-color:#607D8B"></div>
-      <i class="fa fa-sun-o  icon-background" style="font-size: 8em;"></i>
-    </li>
-
-    <li data-row="3" data-col="3" data-sizex="1" data-sizey="1">
       <div data-id="currentTemperatureKitchen" data-view="Number" data-title="Kitchen" data-suffix="°C" onclick="location.href='http://192.168.178.26:3030/weather'" style="background-color:#607D8B"></div>
       <i class="fa fa-sun-o  icon-background" style="font-size: 8em;"></i>
     </li>
 
+    <li data-row="3" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="espresso_currentStatus" data-view="Text" data-title="Esp. Machine" onclick="location.href='http://192.168.178.26:3030/espresso'" style="background-color:#000000"></div>
+      <i class="fa fa-coffee  icon-background" style="font-size: 8em;"></i>
+    </li>
+
     <li data-row="3" data-col="4" data-sizex="1" data-sizey="1">
-      <div data-id="todaySleepDuration " data-view="Meter" data-title="Sleep" data-suffix="h" data-height="130" data-width="150" data-min="0" data-max="150" onclick="location.href='http://192.168.178.26:3030/sleep'" style="background-color:#B39DDB"></div>
-      <i class="fa fa-moon-o  icon-background" style="font-size: 8em;"></i>
+      <div data-id="kitchenGroupStatus" data-view="Text" data-title="Kitchen Mode" onclick="toggle_kitchen_scene()" style="background-color:#3F51B5"></div>
+      <i class="fa fa-lightbulb-o icon-background" style="font-size: 8em;"></i>
     </li>
 
 
+
     <li data-row="3" data-col="5" data-sizex="1" data-sizey="1">
-      <div data-id="home" data-view="Changepage" data-icon="arrow-right" data-title="Kitchen" onclick="location.href='http://192.168.178.26:3030/home2'" data-fasttransition="true" style="background-color:#000000; font-size: 50px"></div>
+      <div data-id="homePage" data-view="Changepage" data-icon="arrow-right" data-title="Home" onclick="location.href='http://192.168.178.26:3030/home'" data-fasttransition="true" style="background-color:#000000; font-size: 50px"></div>
     </li>
 
     
