@@ -17,12 +17,16 @@ function change_to(channel) {
 	  data: bodyData
 	});
 }
+
+function go_back() {
+  window.history.back();
+}
 </script>
 
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1" id="test">
-      <div data-id="home" data-view="Changepage" data-icon="arrow-left" onclick="location.href='http://192.168.178.26:3030/tv'" data-fasttransition="true" style="background-color:#085C61"></div>
+      <div data-id="chPage_back" data-view="Changepage" data-icon="arrow-left" onclick="go_back()" data-fasttransition="true" style="background-color:#000000"></div>
     </li>
 
     <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
