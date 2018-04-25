@@ -4,12 +4,23 @@
    Dashing.widget_base_dimensions = [250, 250]
   Dashing.numColumns = 4
  });
+
+ function go_back() {
+  window.history.back();
+}
  </script>
 
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="home" data-view="Changepage" data-icon="arrow-left" data-title="Back" onclick="location.href='http://192.168.178.26:3030/home'" data-fasttransition="true" style="background-color:#000000"></div>
+    </li>
+
+    <li data-row="1" data-col="2" data-sizex="2" data-sizey="2">
+      <div data-id="picture" data-view="BigImage" data-image="http://i.imgur.com/JycUgrg.jpg"
+        style="background-color:transparent;"
+        data-max="true"
+      ></div>
     </li>
   </ul>
 </div>
